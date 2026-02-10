@@ -5,9 +5,9 @@ This project detects orange traffic cones in images using pixel-wise color segme
 <img src="assets/demo.png" width="300" alt="demo">
 
 ## Method
-1. Convert image BGR -> HSV, label_roi.py draw 1 cone 3 bg each image
+1. Convert image BGR -> HSV, label_roi.py draw 1 cone 3 bg each image and save as `X_cone_hsv.npy` and `X_bg_hsv.npy`
 2. EM Loop: E step calculate Z weight, M step update w, mu, Sigma; `max_iter = 30`
-3. Train cone and bg GMM respectively and save as `X_cone_hsv.npy` and `X_bg_hsv.npy`
+3. Train cone and bg GMM and save as `gmm_cone_bg_hsv.npz`
 4. Load `X_cone_hsv.npy` and `X_bg_hsv.npy` (test begin)
 5. Compute cone likelihood p(x|cone) and background likelihood p(x|bg) using two GMMs
 6. Segment pixels by: p(x|cone) > alpha * p(x|bg); `alpha = 20.0`
